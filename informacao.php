@@ -12,10 +12,8 @@
         }
         .hero-section {
             height: 100vh;
-            background-image: url('path/to/your/image.jpg'); /* Substitua pelo caminho da sua imagem */
-            background-color: brown; /* fallback color */
+            background: url('https://example.com/sua-imagem.jpg') no-repeat center center;
             background-size: cover;
-            background-position: center;
             color: white;
             display: flex;
             align-items: center;
@@ -91,9 +89,6 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#contact">Contato</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="login.php">Acessar</a>
                 </li>
             </ul>
@@ -143,7 +138,7 @@
         <h2>Contato</h2>
         <p>Para mais informações, entre em contato conosco:</p>
         <p>Email: contato@bancodesangue.com</p>
-        <p>Telefone: (98) 98989-8989</p>
+        <p>Telefone: (11) 1234-5678</p>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
