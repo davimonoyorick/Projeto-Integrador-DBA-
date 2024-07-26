@@ -89,7 +89,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
             </div>
             <button type="submit" class="btn btn-primary btn-block">Acesse sua conta</button>
         </form>
-        <a href="index.php" class="register-link">Não possuo cadastro</a>
+        <a href="index.php#steps" class="register-link">Não possuo cadastro</a>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
