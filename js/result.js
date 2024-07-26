@@ -2,11 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('fetch_data.php')
         .then(response => response.json())
         .then(data => {
+            console.log('Dados recebidos:', data); // Adicionado para depuração
             const dadosContainer = document.getElementById('dados');
             const searchInput = document.getElementById('searchInput');
             const bloodTypeSelect = document.getElementById('bloodTypeSelect');
 
-            // Função para filtrar os dados conforme o input de pesquisa e o tipo de sangue
             function filterData(searchTerm, bloodType) {
                 return data.filter(item => {
                     const matchesSearchTerm = (
@@ -25,12 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            // Função para atualizar os dados exibidos com base no termo de pesquisa e no tipo de sangue
             function updateDisplayedData() {
                 const searchTerm = searchInput.value.toLowerCase();
                 const bloodType = bloodTypeSelect.value;
                 const filteredData = filterData(searchTerm, bloodType);
                 let html = '';
+
+                console.log('Dados filtrados:', filteredData); // Adicionado para depuração
 
                 filteredData.forEach(item => {
                     html += `
@@ -45,6 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <p class="card-text"><strong>Email:</strong> ${item.email}</p>
                                     <p class="card-text"><strong>RG:</strong> ${item.rg}</p>
                                     <p class="card-text"><strong>CPF:</strong> ${item.cpf}</p>
+                                    <button class="btn btn-warning btn-sm" onclick="editDoador(${item.id})">Editar</button>
+                                    <button class="btn btn-danger btn-sm" onclick="deleteDoador(${item.id})">Excluir</button>
                                 </div>
                             </div>
                         </div>
@@ -54,14 +57,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 dadosContainer.innerHTML = html;
             }
 
-            // Inicializa os dados exibidos
             updateDisplayedData();
-
-            // Evento de input para o campo de pesquisa
             searchInput.addEventListener('input', updateDisplayedData);
-
-            // Evento de mudança para o campo de seleção de tipo de sangue
             bloodTypeSelect.addEventListener('change', updateDisplayedData);
         })
         .catch(error => console.error('Erro ao buscar dados:', error));
 });
+
+function editDoador(id) {
+    window.location.href = `editar.php?id=${id}`;
+}
+
+function deleteDoador(id) {
+    if (confirm('Tem certeza que deseja excluir este doador?')) {
+        window.location.href = `excluir.php?id=${id}`;
+    }
+}
