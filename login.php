@@ -44,7 +44,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
     <link rel="icon" href="img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/login-style.css">
 </head>
-<body>
+<body style="background-color:#6b0c0c;">
     <div class="login-form">
         <h2 class="text-center">Login</h2>
         <form action="" method="post">

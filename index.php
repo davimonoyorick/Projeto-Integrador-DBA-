@@ -49,7 +49,7 @@
                 <h4>Visite o Local de Doação</h4>
                 <p>Vá ao banco de sangue mais próximo para iniciar o processo de doação.</p>
                 <!-- Link e ícone para o mapa -->
-                <a href="https://www.google.com/maps" target="_blank" class="map-link">
+                <a href="https://www.google.com/maps/place/HEMOMAR+-+Centro+de+Hematologia+e+Hemoterapia+do+Maranh%C3%A3o/@-2.5461317,-44.270085,17z/data=!3m1!4b1!4m6!3m5!1s0x7f68f8ccf7f1051:0x3875b46624c473f2!8m2!3d-2.5461371!4d-44.2675101!16s%2Fg%2F1pt_6w1hr?entry=ttu" target="_blank" class="map-link">
                     <i class="fas fa-map-marker-alt"></i> Encontre no Mapa
                 </a>
             </div>
