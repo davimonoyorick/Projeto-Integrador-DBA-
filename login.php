@@ -41,39 +41,8 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: black;
-            background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        .login-form {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-        }
-        .login-form h2 {
-            margin-bottom: 20px;
-        }
-        .login-form .form-group {
-            margin-bottom: 20px;
-        }
-        .login-form .btn {
-            margin-bottom: 20px;
-        }
-        .login-form .register-link {
-            display: block;
-            text-align: center;
-        }
-    </style>
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/login-style.css">
 </head>
 <body>
     <div class="login-form">

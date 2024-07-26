@@ -7,13 +7,24 @@ require 'auth.php';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>BANCO-DE-SANGUE</title>
+    <title>BANCO DE SANGUE</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script> <!-- jQuery Mask Plugin -->
+    <script>
+        $(document).ready(function(){
+            // Máscara para o campo telefone
+            $('#phone').mask('(00) 00000-0000');
+            // Máscara para o campo CPF
+            $('#cpf').mask('000.000.000-00');
+            // Máscara para o campo RG
+            $('#rg').mask('00.000.000-0');
+        });
+    </script>
 </head>
 <body>
     <div class="container">
@@ -48,7 +59,7 @@ require 'auth.php';
                             <div class="col-md-8 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                    <input name="data_nascimento" placeholder="DD/MM/AAAA" class="form-control" type="text">
+                                    <input name="data_nascimento" placeholder="DD/MM/AAAA" class="form-control" type="date">
                                 </div>
                             </div>
                         </div>
@@ -74,7 +85,7 @@ require 'auth.php';
                             <div class="col-md-8 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                    <input name="phone" placeholder="(55)xxxxx-xxxx" class="form-control" type="text">
+                                    <input id="phone" name="phone" placeholder="(55) xxxxx-xxxx" class="form-control" type="text">
                                 </div>
                             </div>
                         </div>
@@ -114,7 +125,7 @@ require 'auth.php';
                             <div class="col-md-8 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                    <input name="rg" placeholder="RG" class="form-control" type="text">
+                                    <input id="rg" name="rg" placeholder="RG" class="form-control" type="text">
                                 </div>
                             </div>
                         </div>
@@ -124,7 +135,7 @@ require 'auth.php';
                             <div class="col-md-8 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                    <input name="cpf" placeholder="CPF" class="form-control" type="text">
+                                    <input id="cpf" name="cpf" placeholder="CPF" class="form-control" type="text">
                                 </div>
                             </div>
                         </div>
@@ -137,13 +148,12 @@ require 'auth.php';
                         <button type="submit" class="btn btn-warning">Enviar <span class="glyphicon glyphicon-send"></span></button>
                         <!-- Botão para ver resultado -->
                         <a href="result.html" class="btn btn-info">Ver resultado <span class="glyphicon glyphicon-list"></span></a>
-                        <a href="index.php" class="btn btn-info">Sair </a>
+                        <a href="index.php" class="btn btn-info">Sair</a>
                     </div>
                 </div>
             </fieldset>
         </form>
     </div>
     <script src="js/app.js"></script>
-    
 </body>
 </html>
