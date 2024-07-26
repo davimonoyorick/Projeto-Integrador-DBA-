@@ -7,6 +7,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/index-style.css">
     <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- Font Awesome -->
 </head>
 <body>
     <!-- Navbar -->
@@ -47,6 +48,10 @@
                 </div>
                 <h4>Visite o Local de Doação</h4>
                 <p>Vá ao banco de sangue mais próximo para iniciar o processo de doação.</p>
+                <!-- Link e ícone para o mapa -->
+                <a href="https://www.google.com/maps" target="_blank" class="map-link">
+                    <i class="fas fa-map-marker-alt"></i> Encontre no Mapa
+                </a>
             </div>
             <div class="col-md-4 step">
                 <div class="step-icon mb-3">
