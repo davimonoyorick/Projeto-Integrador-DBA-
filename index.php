@@ -5,81 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banco de Sangue - Seja um Doador</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: Arial, sans-serif;
-        }
-        .hero-section {
-            height: 100vh;
-            background-image: url('path/to/your/image.jpg'); /* Substitua pelo caminho da sua imagem */
-            background-color: brown; /* fallback color */
-            background-size: cover;
-            background-position: center;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-        }
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-        .hero-section h1 {
-            font-size: 4rem;
-            font-weight: bold;
-        }
-        .hero-section p {
-            font-size: 1.5rem;
-            margin-top: 20px;
-        }
-        .hero-btn {
-            margin-top: 30px;
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            color: white;
-            background-color: #007bff;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-        .steps-section {
-            padding: 60px 0;
-            background-color: #fff;
-            text-align: center;
-        }
-        .steps-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-        }
-        .step {
-            margin-bottom: 40px;
-        }
-        .step-icon {
-            font-size: 3rem;
-            color: #007bff;
-        }
-        .contact-section {
-            padding: 60px 0;
-            background-color: #f1f1f1;
-            text-align: center;
-        }
-        .contact-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/index-style.css">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- Font Awesome -->
 </head>
 <body>
     <!-- Navbar -->
@@ -94,7 +22,7 @@
                     <a class="nav-link" href="#contact">Contato</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.php">Acessar</a>
+                    <a class="nav-link" href="login.php">Acessar</a>    
                 </li>
             </ul>
         </div>
@@ -120,6 +48,10 @@
                 </div>
                 <h4>Visite o Local de Doação</h4>
                 <p>Vá ao banco de sangue mais próximo para iniciar o processo de doação.</p>
+                <!-- Link e ícone para o mapa -->
+                <a href="https://www.google.com/maps/place/HEMOMAR+-+Centro+de+Hematologia+e+Hemoterapia+do+Maranh%C3%A3o/@-2.5461317,-44.270085,17z/data=!3m1!4b1!4m6!3m5!1s0x7f68f8ccf7f1051:0x3875b46624c473f2!8m2!3d-2.5461371!4d-44.2675101!16s%2Fg%2F1pt_6w1hr?entry=ttu" target="_blank" class="map-link">
+                    <i class="fas fa-map-marker-alt"></i> Encontre no Mapa
+                </a>
             </div>
             <div class="col-md-4 step">
                 <div class="step-icon mb-3">
@@ -144,6 +76,7 @@
         <p>Para mais informações, entre em contato conosco:</p>
         <p>Email: contato@bancodesangue.com</p>
         <p>Telefone: (98) 98989-8989</p>
+        <a href="https://www.saude.ma.gov.br/doe-sangue/">https://www.saude.ma.gov.br/doe-sangue/</a>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

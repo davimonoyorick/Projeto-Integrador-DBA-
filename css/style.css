@@ -1,5 +1,5 @@
 body {
-    background-image: url('banco_de_sangue.jpeg'); /* Coloque aqui o caminho da imagem de fundo */
+    background-image: url('../img/banco_de_sangue.jpeg'); /* Coloque aqui o caminho da imagem de fundo */
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
