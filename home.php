@@ -1,7 +1,4 @@
-<?php
-require 'auth.php';
-?>
-
+<?php require "auth.php"?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,15 +11,28 @@ require 'auth.php';
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script> <!-- jQuery Mask Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script>
         $(document).ready(function(){
-            // Máscara para o campo telefone
+            // Máscara para os campos
             $('#phone').mask('(00) 00000-0000');
-            // Máscara para o campo CPF
+            $('#phone-secundario').mask('(00) 00000-0000');
             $('#cpf').mask('000.000.000-00');
-            // Máscara para o campo RG
             $('#rg').mask('00.000.000-0');
+            $('#peso').mask('000.00');
+            $('#altura').mask('00.00');
+
+            // Validação do consentimento
+            $("#contact_form").on("submit", function(e) {
+                if (!$("#consentimento").is(":checked")) {
+                    e.preventDefault();
+                    $("#consentimento-erro").show();
+                    $("#consentimento").closest(".checkbox").css("border", "2px solid red");
+                } else {
+                    $("#consentimento-erro").hide();
+                    $("#consentimento").closest(".checkbox").css("border", "none");
+                }
+            });
         });
     </script>
 </head>
@@ -39,7 +49,7 @@ require 'auth.php';
                             <div class="col-md-8 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                    <input name="first_name" placeholder="Primeiro nome" class="form-control" type="text">
+                                    <input name="first_name" placeholder="Primeiro nome" class="form-control" type="text" required>
                                 </div>
                             </div>
                         </div>
@@ -49,7 +59,7 @@ require 'auth.php';
                             <div class="col-md-8 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                    <input name="last_name" placeholder="Sobrenome" class="form-control" type="text">
+                                    <input name="last_name" placeholder="Sobrenome" class="form-control" type="text" required>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +69,7 @@ require 'auth.php';
                             <div class="col-md-8 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                    <input name="data_nascimento" placeholder="DD/MM/AAAA" class="form-control" type="date">
+                                    <input name="data_nascimento" class="form-control" type="date" required>
                                 </div>
                             </div>
                         </div>
@@ -69,11 +79,22 @@ require 'auth.php';
                             <div class="col-md-8 selectContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                                    <select name="sexo" class="form-control selectpicker">
-                                        <option value=" ">Selecione seu sexo</option>
-                                        <option>Masculino</option>
-                                        <option>Feminino</option>
+                                    <select name="sexo" class="form-control" required>
+                                        <option value="">Selecione seu sexo</option>
+                                        <option value="Masculino">Masculino</option>
+                                        <option value="Feminino">Feminino</option>
+                                        <option value="Outros">Outros</option>
                                     </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Histórico Médico -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Histórico Médico</label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-heart"></i></span>
+                                    <textarea name="historico_medico" placeholder="Descreva o histórico do doador" class="form-control"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -89,13 +110,23 @@ require 'auth.php';
                                 </div>
                             </div>
                         </div>
+                        <!-- Telefone Secundário -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Segundo Telefone</label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                                    <input id="phone_secundario" name="phone_secundario" placeholder="(55) xxxxx-xxxx" class="form-control" type="text" required>
+                                </div>
+                            </div>
+                        </div>
                         <!-- Email -->
                         <div class="form-group">
                             <label class="col-md-4 control-label">E-Mail</label>
                             <div class="col-md-8 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                    <input name="email" placeholder="Endereço de E-Mail" class="form-control" type="text">
+                                    <input name="email" placeholder="Endereço de E-Mail" class="form-control" type="email" required>
                                 </div>
                             </div>
                         </div>
@@ -105,7 +136,7 @@ require 'auth.php';
                             <div class="col-md-8 selectContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-tint"></i></span>
-                                    <select name="tipo_sangue" class="form-control selectpicker">
+                                    <select name="tipo_sangue" class="form-control" required>
                                         <option value="">Selecione seu tipo de sangue</option>
                                         <option value="A+">A+</option>
                                         <option value="A-">A-</option>
@@ -137,6 +168,39 @@ require 'auth.php';
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
                                     <input id="cpf" name="cpf" placeholder="CPF" class="form-control" type="text">
                                 </div>
+                            </div>
+                        </div>
+                        <!-- Peso -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Peso</label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-scale"></i></span>
+                                    <input id="peso" name="peso" placeholder="Peso em kg" class="form-control" type="text" required>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Altura -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Altura</label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-resize-vertical"></i></span>
+                                    <input id="altura" name="altura" placeholder="Altura em cm" class="form-control" type="text" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Consentimento Informado -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label"></label>
+                            <div class="col-md-8">
+                                <div class="checkbox">
+                                    <label>
+                                        <input id="consentimento" type="checkbox" name="consentimento"> Eu confirmo que li e entendo os termos de doação de sangue.
+                                    </label>
+                                </div>
+                                <div id="consentimento-erro" style="color:red; display: none;">Você deve confirmar os termos antes de continuar.</div>
                             </div>
                         </div>
                     </div>

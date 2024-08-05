@@ -9,15 +9,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data_nascimento = $_POST['data_nascimento'];
     $sexo = $_POST['sexo'];
     $tipo_sangue = $_POST['tipo_sangue'];
+    $peso = $_POST['peso'];
+    $altura = $_POST['altura'];
+    $historico_medico = $_POST['historico_medico'];
+    $consentimento = $_POST['consentimento'];
     $phone = $_POST['phone'];
+    $phone_secundario = $_POST['phone_secundario'];
     $email = $_POST['email'];
     $rg = $_POST['rg'];
     $cpf = $_POST['cpf'];
 
     // Atualizar a tabela pessoal
-    $sql_pessoal = "UPDATE pessoal SET first_name = ?, last_name = ?, data_nascimento = ?, sexo = ?, tipo_sangue = ? WHERE id = ?";
+    $sql_pessoal = "UPDATE pessoal SET first_name = ?, last_name = ?, data_nascimento = ?, sexo = ?, tipo_sangue = ?, peso = ?, altura = ?, historico_medico = ?, consentimento = ? WHERE id = ?";
     if ($stmt_pessoal = $mysqli->prepare($sql_pessoal)) {
-        $stmt_pessoal->bind_param('sssssi', $first_name, $last_name, $data_nascimento, $sexo, $tipo_sangue, $id);
+        $stmt_pessoal->bind_param('ssssssssii', $first_name, $last_name, $data_nascimento, $sexo, $tipo_sangue, $peso, $altura, $historico_medico, $consentimento, $id);
         $stmt_pessoal->execute();
         $stmt_pessoal->close();
     } else {
@@ -25,9 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Atualizar a tabela contato_pessoal
-    $sql_contato = "UPDATE contato_pessoal SET phone = ?, email = ? WHERE doador_id = ?";
+    $sql_contato = "UPDATE contato_pessoal SET phone = ?, phone_secundario = ?, email = ? WHERE doador_id = ?";
     if ($stmt_contato = $mysqli->prepare($sql_contato)) {
-        $stmt_contato->bind_param('ssi', $phone, $email, $id);
+        $stmt_contato->bind_param('sssi', $phone, $phone_secundario, $email, $id);
         $stmt_contato->execute();
         $stmt_contato->close();
     } else {
@@ -50,7 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } else if (isset($_GET['id'])) {
     // Exibir o formulário de edição
     $id = intval($_GET['id']);
-    $sql = "SELECT p.id, p.first_name, p.last_name, p.data_nascimento, p.sexo, c.phone, c.email, p.tipo_sangue, i.rg, i.cpf 
+    $sql = "SELECT p.id, p.first_name, p.last_name, p.data_nascimento, p.sexo, p.tipo_sangue, p.peso, p.altura, p.historico_medico, p.consentimento, 
+            c.phone, c.phone_secundario, c.email, i.rg, i.cpf 
             FROM pessoal p 
             JOIN contato_pessoal c ON p.id = c.doador_id 
             JOIN identidade i ON p.id = i.doador_id
@@ -69,7 +75,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     die('ID do doador não especificado.');
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -92,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input type="hidden" name="id" value="<?php echo htmlspecialchars($doador['id']); ?>">
 
             <div class="form-group">
-                <label for="first_name">Primeiro Nome</label>
+                <label for="first_name">Nome</label>
                 <input type="text" class="form-control" id="first_name" name="first_name" value="<?php echo htmlspecialchars($doador['first_name']); ?>" required>
             </div>
             <div class="form-group">
@@ -101,31 +106,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <div class="form-group">
                 <label for="data_nascimento">Data de Nascimento</label>
-                <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" value="<?php echo htmlspecialchars($doador['data_nascimento']); ?>" required>
+                <input type="text" class="form-control" id="data_nascimento" name="data_nascimento" value="<?php echo htmlspecialchars($doador['data_nascimento']); ?>" required>
             </div>
             <div class="form-group">
                 <label for="sexo">Sexo</label>
-                <select class="form-control" id="sexo" name="sexo" required>
-                    <option value="M" <?php echo $doador['sexo'] == 'M' ? 'selected' : ''; ?>>Masculino</option>
-                    <option value="F" <?php echo $doador['sexo'] == 'F' ? 'selected' : ''; ?>>Feminino</option>
-                </select>
+                <input type="text" class="form-control" id="sexo" name="sexo" value="<?php echo htmlspecialchars($doador['sexo']); ?>" required>
             </div>
             <div class="form-group">
                 <label for="tipo_sangue">Tipo Sanguíneo</label>
-                <select class="form-control" id="tipo_sangue" name="tipo_sangue" required>
-                    <option value="A+" <?php echo $doador['tipo_sangue'] == 'A+' ? 'selected' : ''; ?>>A+</option>
-                    <option value="A-" <?php echo $doador['tipo_sangue'] == 'A-' ? 'selected' : ''; ?>>A-</option>
-                    <option value="B+" <?php echo $doador['tipo_sangue'] == 'B+' ? 'selected' : ''; ?>>B+</option>
-                    <option value="B-" <?php echo $doador['tipo_sangue'] == 'B-' ? 'selected' : ''; ?>>B-</option>
-                    <option value="AB+" <?php echo $doador['tipo_sangue'] == 'AB+' ? 'selected' : ''; ?>>AB+</option>
-                    <option value="AB-" <?php echo $doador['tipo_sangue'] == 'AB-' ? 'selected' : ''; ?>>AB-</option>
-                    <option value="O+" <?php echo $doador['tipo_sangue'] == 'O+' ? 'selected' : ''; ?>>O+</option>
-                    <option value="O-" <?php echo $doador['tipo_sangue'] == 'O-' ? 'selected' : ''; ?>>O-</option>
+                <input type="text" class="form-control" id="tipo_sangue" name="tipo_sangue" value="<?php echo htmlspecialchars($doador['tipo_sangue']); ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="peso">Peso (kg)</label>
+                <input type="text" class="form-control" id="peso" name="peso" value="<?php echo htmlspecialchars($doador['peso']); ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="altura">Altura (m)</label>
+                <input type="text" class="form-control" id="altura" name="altura" value="<?php echo htmlspecialchars($doador['altura']); ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="historico_medico">Histórico Médico</label>
+                <textarea class="form-control" id="historico_medico" name="historico_medico" rows="3"><?php echo htmlspecialchars($doador['historico_medico']); ?></textarea>
+            </div>
+            <div class="form-group">
+                <label for="consentimento">Consentimento</label>
+                <select class="form-control" id="consentimento" name="consentimento" required>
+                    <option value="1" <?php echo $doador['consentimento'] ? 'selected' : ''; ?>>Sim</option>
+                    <option value="0" <?php echo !$doador['consentimento'] ? 'selected' : ''; ?>>Não</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="phone">Telefone</label>
                 <input type="text" class="form-control" id="phone" name="phone" value="<?php echo htmlspecialchars($doador['phone']); ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="phone_secundario">Telefone Secundário</label>
+                <input type="text" class="form-control" id="phone_secundario" name="phone_secundario" value="<?php echo htmlspecialchars($doador['phone_secundario']); ?>">
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
@@ -139,8 +155,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <label for="cpf">CPF</label>
                 <input type="text" class="form-control" id="cpf" name="cpf" value="<?php echo htmlspecialchars($doador['cpf']); ?>" required>
             </div>
-            <button type="submit" class="btn btn-primary">Salvar</button>
-            <button type="button" class="btn btn-secondary" onclick="window.location.href='result.html';">Voltar</button>
+
+            <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+            <a href="result.php" class="btn btn-secondary">Voltar</a>
 
         </form>
     </div>

@@ -8,10 +8,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $data_nascimento = $_POST['data_nascimento'];
     $sexo = $_POST['sexo'];
     $phone = $_POST['phone'];
+    $phone_secundario = $_POST['phone_secundario']; // Novo campo
     $email = $_POST['email'];
     $tipo_sangue = $_POST['tipo_sangue'];
     $rg = $_POST['rg'];
     $cpf = $_POST['cpf'];
+    $peso = $_POST['peso']; // Novo campo
+    $altura = $_POST['altura']; // Novo campo
+    $historico_medico = $_POST['historico_medico']; // Novo campo
+    $consentimento = isset($_POST['consentimento']) ? 1 : 0; // Novo campo
 
     // Verificar se os dados já existem no banco de dados
     $check_sql = "SELECT * FROM pessoal WHERE first_name = ? AND last_name = ? AND data_nascimento = ? AND tipo_sangue = ?";
@@ -22,15 +27,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows == 0) {
         // Inserir dados nas tabelas
-        $insert_pessoal = "INSERT INTO pessoal (first_name, last_name, data_nascimento, tipo_sangue, sexo) VALUES (?, ?, ?, ?, ?)";
+        $insert_pessoal = "INSERT INTO pessoal (first_name, last_name, data_nascimento, tipo_sangue, sexo, peso, altura, historico_medico, consentimento) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $mysqli->prepare($insert_pessoal);
-        $stmt->bind_param("sssss", $first_name, $last_name, $data_nascimento, $tipo_sangue, $sexo);
+        $stmt->bind_param("sssssssss", $first_name, $last_name, $data_nascimento, $tipo_sangue, $sexo, $peso, $altura, $historico_medico, $consentimento);
         $stmt->execute();
         $doador_id = $stmt->insert_id;
 
-        $insert_contato = "INSERT INTO contato_pessoal (doador_id, phone, email) VALUES (?, ?, ?)";
+        $insert_contato = "INSERT INTO contato_pessoal (doador_id, phone, phone_secundario, email) VALUES (?, ?, ?, ?)";
         $stmt = $mysqli->prepare($insert_contato);
-        $stmt->bind_param("iss", $doador_id, $phone, $email);
+        $stmt->bind_param("isss", $doador_id, $phone, $phone_secundario, $email);
         $stmt->execute();
 
         $insert_identidade = "INSERT INTO identidade (doador_id, rg, cpf) VALUES (?, ?, ?)";

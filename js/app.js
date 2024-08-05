@@ -33,7 +33,7 @@ $(document).ready(function() {
                     },
                     date: {
                         format: 'DD/MM/YYYY',
-                        message: 'Por favor, forneça uma data válida no formato DD/MM/AAAA'
+                        message: 'Por favor, forneça uma data válida no formato DD/MM/YYYY'
                     }
                 }
             },
@@ -41,6 +41,13 @@ $(document).ready(function() {
                 validators: {
                     notEmpty: {
                         message: 'Por favor, selecione seu sexo'
+                    }
+                }
+            },
+            historico_medico: {
+                validators: {
+                    notEmpty:{
+                        message:'Por favor, escreva o histórico médico do paciente'
                     }
                 }
             },
@@ -62,6 +69,17 @@ $(document).ready(function() {
                 }
             },
             phone: {
+                validators: {
+                    notEmpty: {
+                        message: 'Por favor, forneça seu número de telefone'
+                    },
+                    phone: {
+                        country: 'BR',
+                        message: 'Por favor, forneça um número de telefone com código de área'
+                    }
+                }
+            },
+            phone_secundario: {
                 validators: {
                     notEmpty: {
                         message: 'Por favor, forneça seu número de telefone'
@@ -95,6 +113,26 @@ $(document).ready(function() {
                         message: 'Por favor, forneça um CPF válido'
                     }
                 }
+            },
+            peso: {
+                validators: {
+                    notEmpty: {
+                        message: 'Por favor, forneça seu peso'
+                    },
+                    numeric: {
+                        message: 'Por favor, forneça um valor numérico para o peso'
+                    }
+                }
+            },
+            altura: {
+                validators: {
+                    notEmpty: {
+                        message: 'Por favor, forneça sua altura'
+                    },
+                    numeric: {
+                        message: 'Por favor, forneça um valor numérico para a altura'
+                    }
+                }
             }
         }
     }).on('success.form.bv', function(e) {
@@ -108,7 +146,7 @@ $(document).ready(function() {
                 $form[0].reset();
                 bv.resetForm();
                 setTimeout(function() {
-                    window.location.href = 'result.html';  // Redireciona para result.html após o sucesso
+                    window.location.href = 'result.php';  // Redireciona para result.php após o sucesso
                 }, 2000);  // Ajuste o tempo conforme necessário
             } else {
                 alert(result);  // Mostra a mensagem de erro retornada pelo servidor
@@ -118,4 +156,3 @@ $(document).ready(function() {
         });
     });
 });
-

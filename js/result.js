@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('fetch_data.php')
         .then(response => response.json())
         .then(data => {
-            console.log('Dados recebidos:', data); // Adicionado para depuração
+            console.log('Dados recebidos:', data);
             const dadosContainer = document.getElementById('dados');
             const searchInput = document.getElementById('searchInput');
             const bloodTypeSelect = document.getElementById('bloodTypeSelect');
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const filteredData = filterData(searchTerm, bloodType);
                 let html = '';
 
-                console.log('Dados filtrados:', filteredData); // Adicionado para depuração
+                console.log('Dados filtrados:', filteredData);
 
                 filteredData.forEach(item => {
                     html += `
@@ -42,7 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <p class="card-text"><strong>Data de Nascimento:</strong> ${item.data_nascimento}</p>
                                     <p class="card-text"><strong>Sexo:</strong> ${item.sexo}</p>
                                     <p class="card-text"><strong>Tipo Sanguíneo:</strong> ${item.tipo_sangue}</p>
+                                    <p class="card-text"><strong>Peso:</strong> ${item.peso ? item.peso + ' kg' : 'Não informado'}</p>
+                                    <p class="card-text"><strong>Altura:</strong> ${item.altura ? item.altura + ' m' : 'Não informado'}</p>
+                                    <p class="card-text"><strong>Histórico Médico:</strong> ${item.historico_medico ? item.historico_medico : 'Não informado'}</p>
+                                    <p class="card-text"><strong>Consentimento:</strong> ${item.consentimento == 1 ? 'Sim' : 'Não'}</p>
                                     <p class="card-text"><strong>Telefone:</strong> ${item.phone}</p>
+                                    <p class="card-text"><strong>Telefone Secundário:</strong> ${item.phone_secundario ? item.phone_secundario : 'Não informado'}</p>
                                     <p class="card-text"><strong>Email:</strong> ${item.email}</p>
                                     <p class="card-text"><strong>RG:</strong> ${item.rg}</p>
                                     <p class="card-text"><strong>CPF:</strong> ${item.cpf}</p>

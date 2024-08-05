@@ -39,7 +39,7 @@ if (isset($_GET['id'])) {
 
         // Commit da transação
         $mysqli->commit();
-        header('Location: result.html?message=success');
+        header('Location: result.php?message=success');
     } catch (Exception $e) {
         // Rollback da transação em caso de erro
         $mysqli->rollback();

@@ -2,7 +2,7 @@
 $host = 'localhost'; // ou o host do seu servidor de banco de dados
 $user = 'root'; // seu usuário do MySQL
 $password = ''; // sua senha do MySQL
-$database = 'banco_de_sangue'; // nome do seu banco de dados
+$database = 'banco_de_sangue_01'; // nome do seu banco de dados
 
 $mysqli = new mysqli($host, $user, $password, $database);
 

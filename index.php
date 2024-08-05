@@ -76,7 +76,7 @@
         <p>Para mais informações, entre em contato conosco:</p>
         <p>Email: contato@bancodesangue.com</p>
         <p>Telefone: (98) 98989-8989</p>
-        <a href="https://www.saude.ma.gov.br/doe-sangue/">https://www.saude.ma.gov.br/doe-sangue/</a>
+        <a href="https://www.saude.ma.gov.br/doe-sangue/" target="_blank">https://www.saude.ma.gov.br/doe-sangue/</a>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
