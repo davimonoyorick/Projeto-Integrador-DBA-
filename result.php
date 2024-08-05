@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dados dos Doadores</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style type="text/css">
         body{
             background-image: url("css/banco_de_sangue.jpeg");
@@ -28,8 +30,16 @@
         .card-title, .card-text {
             color: #000;
         }
+        .button-container{
+             display: flex;
+            justify-content: center;
+            gap:10px;
+        }
         .btn-adjusted {
-            margin-top: -20px;
+            font-size: 16px;
+        }
+        .link-call{
+            display: inline;
         }
     </style>
 </head>
@@ -55,9 +65,15 @@
             </select>
         </div>
         <div id="dados" class="row"></div>
-        <div class="text-center mt-4">
-            <button onclick="window.location.href='./home.php'" class="btn btn-lg btn-primary btn-adjusted">CADASTRO <span class="glyphicon glyphicon-list"></span></button>
-        </div>
+<div class="text-center mt-4">
+    <div class="button-container">
+        <button onclick="window.location.href='./home.php'" class="btn btn-lg btn-primary btn-adjusted">
+            <i class="fas fa-user-plus"></i> VOLTAR <span class="glyphicon glyphicon-plus"></span>
+        </button>
+        <a href="index.php" class="btn btn-info btn-adjusted">Sair</a>
+    </div>
+</div>
+
     </div>
 
     <script src="js/result.js"></script>
