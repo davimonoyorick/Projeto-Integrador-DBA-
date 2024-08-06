@@ -7,41 +7,8 @@
     <title>Dados dos Doadores</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/result-style.css">
 
-    <style type="text/css">
-        body{
-            background-image: url("css/banco_de_sangue.jpeg");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            color: #fff;
-        }
-        .container {
-            background: rgba(0, 0, 0, 0.7); /* Transparência de 70% */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px 0px #000;
-        }
-        .card {
-            background: rgba(255, 255, 255, 0.8); /* Transparência de 80% */
-            margin-bottom: 15px;
-            border: none;
-        }
-        .card-title, .card-text {
-            color: #000;
-        }
-        .button-container{
-             display: flex;
-            justify-content: center;
-            gap:10px;
-        }
-        .btn-adjusted {
-            font-size: 16px;
-        }
-        .link-call{
-            display: inline;
-        }
-    </style>
 </head>
 <body>
     <div class="container mt-5">
@@ -67,8 +34,8 @@
         <div id="dados" class="row"></div>
 <div class="text-center mt-4">
     <div class="button-container">
-        <button onclick="window.location.href='./home.php'" class="btn btn-lg btn-primary btn-adjusted">
-            <i class="fas fa-user-plus"></i> VOLTAR <span class="glyphicon glyphicon-plus"></span>
+        <button onclick="window.location.href='./admin_home.php'" class="btn btn-lg btn-primary btn-adjusted">
+            <i class="fas fa-user-plus"></i>Voltar<span class="glyphicon glyphicon-plus"></span>
         </button>
         <a href="index.php" class="btn btn-info btn-adjusted">Sair</a>
     </div>
