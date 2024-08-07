@@ -1,0 +1,116 @@
+ <div class="container">
+        <form class="well form-horizontal" action="submit.php" method="post" id="contact_form" enctype="multipart/form-data">
+            <fieldset>
+                <legend class="text-center">Cadastro Novo Doador</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- Nome -->
+                        <div class="form-group">
+                            <label for="first_name">Nome</label>
+                            <input id="first_name" name="first_name" placeholder="Primeiro nome" class="form-control" type="text" required>
+                        </div>
+                        <!-- Sobrenome -->
+                        <div class="form-group">
+                            <label for="last_name">Sobrenome</label>
+                            <input id="last_name" name="last_name" placeholder="Sobrenome" class="form-control" type="text" required>
+                        </div>
+                        <!-- Data de nascimento -->
+                        <div class="form-group">
+                            <label for="data_nascimento">Data de Nascimento</label>
+                            <input id="data_nascimento" name="data_nascimento" class="form-control" type="date" required>
+                        </div>
+                        <!-- Sexo -->
+                        <div class="form-group">
+                            <label for="sexo">Sexo</label>
+                            <select id="sexo" name="sexo" class="form-control" required>
+                                <option value="">Selecione seu sexo</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Feminino">Feminino</option>
+                                <option value="Outros">Outros</option>
+                            </select>
+                        </div>
+                        <!-- Histórico Médico -->
+                        <div class="form-group">
+                            <label for="historico_medico">Histórico Médico</label>
+                            <textarea id="historico_medico" name="historico_medico" placeholder="Descreva o histórico médico do doador" class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Telefone -->
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input id="phone" name="phone" placeholder="(55) xxxxx-xxxx" class="form-control" type="text">
+                        </div>
+                        <!-- Telefone Secundário -->
+                        <div class="form-group">
+                            <label for="phone_secundario">Segundo Telefone</label>
+                            <input id="phone_secundario" name="phone_secundario" placeholder="(55) xxxxx-xxxx" class="form-control" type="text" required>
+                        </div>
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="email">E-Mail</label>
+                            <input id="email" name="email" placeholder="Endereço de E-Mail" class="form-control" type="email" required>
+                        </div>
+                        <!-- Tipo de Sangue -->
+                        <div class="form-group">
+                            <label for="tipo_sangue">Tipo de Sangue</label>
+                            <select id="tipo_sangue" name="tipo_sangue" class="form-control" required>
+                                <option value="">Selecione seu tipo de sangue</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+                        <!-- RG -->
+                        <div class="form-group">
+                            <label for="rg">RG</label>
+                            <input id="rg" name="rg" placeholder="RG" class="form-control" type="text">
+                        </div>
+                        <!-- CPF -->
+                        <div class="form-group">
+                            <label for="cpf">CPF</label>
+                            <input id="cpf" name="cpf" placeholder="CPF" class="form-control" type="text">
+                        </div>
+                        <!-- Peso -->
+                        <div class="form-group">
+                            <label for="peso">Peso</label>
+                            <input id="peso" name="peso" placeholder="Peso em kg" class="form-control" type="text" required>
+                        </div>
+                        <!-- Altura -->
+                        <div class="form-group">
+                            <label for="altura">Altura</label>
+                            <input id="altura" name="altura" placeholder="Altura em cm" class="form-control" type="text" required>
+                        </div>
+
+                        <!-- Consentimento Informado -->
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input id="consentimento" type="checkbox" class="form-check-input" name="consentimento">
+                                <label class="form-check-label" for="consentimento">Eu confirmo que li e entendo os termos de doação de sangue.</label>
+                            </div>
+                            <div id="consentimento-erro" style="color:red; display: none;">Você deve confirmar os termos antes de continuar.</div>
+                        </div>
+
+                        <!-- Upload de PDF -->
+                        <div class="form-group">
+                            <label for="exames">Exames e Observações Médicas (PDF)</label>
+                            <input id="exames" name="exames" type="file" class="form-control-file" accept=".pdf" required>
+                            <small id="examesHelp" class="form-text text-muted">Envie um arquivo PDF contendo exames e observações médicas.</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-success" role="alert" id="success_message" style="display: none;">Sucesso! <i class="fas fa-thumbs-up"></i> Obrigado por se inscrever, entraremos em contato com você em breve.</div>
+                <!-- Button -->
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-warning">Enviar <i class="fas fa-paper-plane"></i></button>
+                    <!-- Botão para ver resultado -->
+                    <a href="result.php" class="btn btn-info">Ver resultado <i class="fas fa-list"></i></a>
+                </div>
+            </fieldset>
+        </form>
+    </div>
