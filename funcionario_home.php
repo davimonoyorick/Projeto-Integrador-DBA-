@@ -44,30 +44,66 @@ $nome = $_SESSION['user_name']; // Obtenha o nome do usuário
         });
     </script>
     <style>
-        body{
+        body {
             background-image: url('img/banco_de_sangue.jpeg');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
             color: #fff;
+            font-family: Arial, sans-serif;
         }
         .container {
-            background: rgba(0, 0, 0, 0.7); /* Transparência de 70% */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px 0px #000;
+            background: rgba(0, 0, 0, 0.8); /* Transparência de 80% */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+            margin-top: 80px; /* Margem para não sobrepor o conteúdo */
         }
         .form-group {
             margin-bottom: 1rem;
         }
         .form-control {
-            margin-bottom: 0.5rem; /* Espaçamento uniforme entre os campos */
+            margin-bottom: 0.5rem;
+            border-radius: 0.25rem;
+            border: 1px solid #ddd;
+        }
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
         }
         .form-check-label {
             margin-left: 0.5rem;
         }
         .form-check-input {
             margin-left: 0.3rem;
+        }
+        .form-check-input[type="file"] {
+            padding: 0.5rem;
+        }
+        .alert {
+            border-radius: 0.25rem;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .btn {
+            border-radius: 0.25rem;
+        }
+        .btn-warning {
+            background-color: #f0ad4e;
+            border-color: #f0ad4e;
+        }
+        .btn-warning:hover {
+            background-color: #ec971f;
+            border-color: #d58512;
+        }
+        .btn-info {
+            background-color: #5bc0de;
+            border-color: #46b8da;
+        }
+        .btn-info:hover {
+            background-color: #31b0d5;
+            border-color: #269abc;
         }
     </style>
 </head>
@@ -99,8 +135,8 @@ $nome = $_SESSION['user_name']; // Obtenha o nome do usuário
         </div>
     </nav>
 
-    <div class="container" style="margin-top: 80px;"> <!-- Adicionando margem para não sobrepor o conteúdo -->
-        <form class="well form-horizontal" action="submit.php" method="post" id="contact_form">
+    <div class="container">
+        <form class="well form-horizontal" action="submit.php" method="post" id="contact_form" enctype="multipart/form-data">
             <fieldset>
                 <legend class="text-center">Cadastro Novo Doador</legend>
                 <div class="row">
@@ -196,14 +232,21 @@ $nome = $_SESSION['user_name']; // Obtenha o nome do usuário
                             </div>
                             <div id="consentimento-erro" style="color:red; display: none;">Você deve confirmar os termos antes de continuar.</div>
                         </div>
+
+                        <!-- Upload de PDF -->
+                        <div class="form-group">
+                            <label for="exames">Exames e Observações Médicas (PDF)</label>
+                            <input id="exames" name="exames" type="file" class="form-control-file" accept=".pdf" required>
+                            <small id="examesHelp" class="form-text text-muted">Envie um arquivo PDF contendo exames e observações médicas.</small>
+                        </div>
                     </div>
                 </div>
-                <div class="alert alert-success" role="alert" id="success_message" style="display: none;">Sucesso <i class="glyphicon glyphicon-thumbs-up"></i> Obrigado por se inscrever, entraremos em contato com você em breve.</div>
+                <div class="alert alert-success" role="alert" id="success_message" style="display: none;">Sucesso! <i class="fas fa-thumbs-up"></i> Obrigado por se inscrever, entraremos em contato com você em breve.</div>
                 <!-- Button -->
                 <div class="form-group text-center">
-                    <button type="submit" class="btn btn-warning">Enviar <span class="glyphicon glyphicon-send"></span></button>
+                    <button type="submit" class="btn btn-warning">Enviar <i class="fas fa-paper-plane"></i></button>
                     <!-- Botão para ver resultado -->
-                    <a href="result.php" class="btn btn-info">Ver resultado <span class="glyphicon glyphicon-list"></span></a>
+                    <a href="result.php" class="btn btn-info">Ver resultado <i class="fas fa-list"></i></a>
                 </div>
             </fieldset>
         </form>
