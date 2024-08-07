@@ -147,7 +147,7 @@ $nome = $_SESSION['user_name']; // Obtenha o nome do usuário
     <script>
         function showContent(section) {
             var content = {
-                'relatorios': 'Aqui estão os relatórios.',
+                'relatorios': 'Relatorios.',
                 'funcionarios': 'Aqui estão os funcionários.',
                 'estoque': 'Aqui está o estoque.',
                 'cadastro': 'Aqui você pode cadastrar um novo funcionário.',

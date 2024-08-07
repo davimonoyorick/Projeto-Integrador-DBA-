@@ -28,7 +28,7 @@ $nome = $_SESSION['user_name']; // Obtenha o nome do usuário
             $('#cpf').mask('000.000.000-00');
             $('#rg').mask('00.000.000-0');
             $('#peso').mask('000.00');
-            $('#altura').mask('00.00');
+            $('#altura').mask('0.00');
 
             // Validação do consentimento
             $("#contact_form").on("submit", function(e) {
@@ -44,6 +44,19 @@ $nome = $_SESSION['user_name']; // Obtenha o nome do usuário
         });
     </script>
     <style>
+        body{
+            background-image: url('img/banco_de_sangue.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #fff;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.7); /* Transparência de 70% */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px #000;
+        }
         .form-group {
             margin-bottom: 1rem;
         }
@@ -61,7 +74,7 @@ $nome = $_SESSION['user_name']; // Obtenha o nome do usuário
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-        <a class="navbar-brand" href="#">Bem-vindo, <?php echo htmlspecialchars($nome); ?>!</a>
+        <a class="navbar-brand" href="#">Colaborador: <?php echo htmlspecialchars($nome); ?></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -89,7 +102,7 @@ $nome = $_SESSION['user_name']; // Obtenha o nome do usuário
     <div class="container" style="margin-top: 80px;"> <!-- Adicionando margem para não sobrepor o conteúdo -->
         <form class="well form-horizontal" action="submit.php" method="post" id="contact_form">
             <fieldset>
-                <legend class="text-center">SANGUE SOLIDÁRIO!</legend>
+                <legend class="text-center">Cadastro Novo Doador</legend>
                 <div class="row">
                     <div class="col-md-6">
                         <!-- Nome -->
