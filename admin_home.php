@@ -14,60 +14,107 @@ $nome = $_SESSION['user_name']; // Obtenha o nome do usuário
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem-vindo</title>
+    <title>Painel de Administração</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-    <link rel="stylesheet" href="css/admin_home-style.css">
-    <script>
-        $(document).ready(function() {
-            // Máscara para os campos
-            $('#phone').mask('(00) 00000-0000');
-            $('#phone_secundario').mask('(00) 00000-0000');
-            $('#cpf').mask('000.000.000-00');
-            $('#rg').mask('00.000.000-0');
-            $('#peso').mask('000.00');
-            $('#altura').mask('00.00');
-
-            // Validação do consentimento
-            $("#contact_form").on("submit", function(e) {
-                if (!$("#consentimento").is(":checked")) {
-                    e.preventDefault();
-                    $("#consentimento-erro").show();
-                    $("#consentimento").closest(".checkbox").css("border", "2px solid red");
-                } else {
-                    $("#consentimento-erro").hide();
-                    $("#consentimento").closest(".checkbox").css("border", "none");
-                }
-            });
-        });
-    </script>
     <style>
-
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: black; /* Fundo do corpo da página */
+        }
+        .navbar {
+            z-index: 1000; /* Garantir que a navbar está acima da barra lateral */
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background-color: #007bff; /* Cor de fundo da navbar */
+            color: #fff; /* Cor do texto da navbar */
+        }
+        .navbar-brand {
+            color: #fff !important; /* Garantir que o texto da navbar seja branco */
+        }
+        .sidebar {
+            background-color: #343a40;
+            color: #fff;
+            width: 250px;
+            padding-top: 60px; /* Adicionar espaçamento para não ser coberto pelo cabeçalho */
+            height: 100vh;
+            position: fixed;
+            top: 56px; /* Ajuste baseado na altura da navbar */
+            left: 0;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            overflow-y: auto;
+            z-index: 500; /* Garantir que a barra lateral está abaixo da navbar mas acima do conteúdo */
+        }
+        .sidebar a {
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid #495057;
+        }
+        .sidebar a:hover {
+            background-color: #495057;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            width: calc(100% - 250px);
+            margin-top: 56px; /* Adicionar margem para o conteúdo não ficar atrás da navbar */
+        }
+        .container {
+            background: #fff; /* Fundo branco */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px #000;
+            max-width: 800px; /* Defina uma largura máxima, ajuste conforme necessário */
+            margin: 20px auto; /* Margem automática para centralizar horizontalmente */
+            text-align: center; /* Opcional: centralizar o texto dentro do container */
+        }
+        .card {
+            border: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: #fff;
+            font-size: 1.25rem;
+            border-bottom: 1px solid #0069d9;
+        }
+        .card-body {
+            padding: 20px;
+            color: #000; /* Cor do texto no conteúdo principal */
+        }
+        .btn-custom {
+            border-radius: 0.25rem;
+            margin: 10px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .btn-custom:hover {
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
     </style>
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-        <a class="navbar-brand" href="#">Bem-vindo, <?php echo htmlspecialchars($nome); ?>!</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Painel de Administração</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-bell notification-icon"></i></a>
-                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Menu
+                        <i class="fas fa-user"></i> <?php echo htmlspecialchars($nome); ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="estoque.php">Estoque</a>
-                        <a class="dropdown-item" href="solicitacoes.php">Solicitação</a>
-                        <a class="dropdown-item" href="#">Cadastro</a>
-                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="logout.php">Sair</a>
                     </div>
                 </li>
@@ -75,194 +122,41 @@ $nome = $_SESSION['user_name']; // Obtenha o nome do usuário
         </div>
     </nav>
 
-    <div class="container" style="margin-top: 80px;"> <!-- Adicionando margem para não sobrepor o conteúdo -->
-        <form class="well form-horizontal" action="submit.php" method="post" id="contact_form">
-            <fieldset>
-                <legend class="text-center">SANGUE SOLIDÁRIO!</legend>
-                <div class="row">
-                    <div class="col-md-6">
-                        <!-- Nome -->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Nome</label>
-                            <div class="col-md-8 inputGroupContainer">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                    <input name="first_name" placeholder="Primeiro nome" class="form-control" type="text" required>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Sobrenome -->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Sobrenome</label>
-                            <div class="col-md-8 inputGroupContainer">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                    <input name="last_name" placeholder="Sobrenome" class="form-control" type="text" required>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Data de nascimento -->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Data de Nascimento</label>
-                            <div class="col-md-8 inputGroupContainer">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                    <input name="data_nascimento" class="form-control" type="date" required>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Sexo -->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Sexo</label>
-                            <div class="col-md-8 selectContainer">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                                    <select name="sexo" class="form-control" required>
-                                        <option value="">Selecione seu sexo</option>
-                                        <option value="Masculino">Masculino</option>
-                                        <option value="Feminino">Feminino</option>
-                                        <option value="Outros">Outros</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Histórico Médico -->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Histórico Médico</label>
-                            <div class="col-md-8 inputGroupContainer">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-heart"></i></span>
-                                    <textarea name="historico_medico" placeholder="Descreva o histórico do doador
-                                    <!-- Histórico Médico -->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label">Histórico Médico</label>
-                                        <div class="col-md-8 inputGroupContainer">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="glyphicon glyphicon-heart"></i></span>
-                                                <textarea name="historico_medico" placeholder="Descreva o histórico do doador" class="form-control"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <!-- Telefone -->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label">Telefone</label>
-                                        <div class="col-md-8 inputGroupContainer">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                                <input id="phone" name="phone" placeholder="(55) xxxxx-xxxx" class="form-control" type="text">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Telefone Secundário -->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label">Segundo Telefone</label>
-                                        <div class="col-md-8 inputGroupContainer">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                                <input id="phone_secundario" name="phone_secundario" placeholder="(55) xxxxx-xxxx" class="form-control" type="text" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Email -->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label">E-Mail</label>
-                                        <div class="col-md-8 inputGroupContainer">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                                <input name="email" placeholder="Endereço de E-Mail" class="form-control" type="email" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Tipo de Sangue -->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label">Tipo de Sangue</label>
-                                        <div class="col-md-8 selectContainer">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="glyphicon glyphicon-tint"></i></span>
-                                                <select name="tipo_sangue" class="form-control" required>
-                                                    <option value="">Selecione seu tipo de sangue</option>
-                                                    <option value="A+">A+</option>
-                                                    <option value="A-">A-</option>
-                                                    <option value="B+">B+</option>
-                                                    <option value="B-">B-</option>
-                                                    <option value="AB+">AB+</option>
-                                                    <option value="AB-">AB-</option>
-                                                    <option value="O+">O+</option>
-                                                    <option value="O-">O-</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- RG -->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label">RG</label>
-                                        <div class="col-md-8 inputGroupContainer">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                                <input id="rg" name="rg" placeholder="RG" class="form-control" type="text">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- CPF -->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label">CPF</label>
-                                        <div class="col-md-8 inputGroupContainer">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                                <input id="cpf" name="cpf" placeholder="CPF" class="form-control" type="text">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Peso -->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label">Peso</label>
-                                        <div class="col-md-8 inputGroupContainer">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="glyphicon glyphicon-scale"></i></span>
-                                                <input id="peso" name="peso" placeholder="Peso em kg" class="form-control" type="text" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Altura -->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label">Altura</label>
-                                        <div class="col-md-8 inputGroupContainer">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="glyphicon glyphicon-resize-vertical"></i></span>
-                                                <input id="altura" name="altura" placeholder="Altura em cm" class="form-control" type="text" required>
-                                            </div>
-                                        </div>
-                                    </div>
+    <!-- Barra Lateral -->
+    <div class="sidebar">
+        <h4 class="text-center">Admin Panel</h4>
+        <a href="#" onclick="showContent('relatorios')">Relatórios</a>
+        <a href="#" onclick="showContent('funcionarios')">Funcionários</a>
+        <a href="#" onclick="showContent('estoque')">Estoque</a>
+        <a href="#" onclick="showContent('cadastro')">Cadastro Novo Funcionario</a>
+        <a href="#" onclick="showContent('solicitacoes')">Solicitações</a>
+        <a href="#" onclick="showContent('configuracoes')">Configurações</a>
+        <a href="logout.php">Sair</a>
+    </div>
 
-                                    <!-- Consentimento Informado -->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label"></label>
-                                        <div class="col-md-8">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input id="consentimento" type="checkbox" name="consentimento"> Eu confirmo que li e entendo os termos de doação de sangue.
-                                                </label>
-                                            </div>
-                                            <div id="consentimento-erro" style="color:red; display: none;">Você deve confirmar os termos antes de continuar.</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="alert alert-success" role="alert" id="success_message" style="display: none;">Sucesso <i class="glyphicon glyphicon-thumbs-up"></i> Obrigado por se inscrever, entraremos em contato com você em breve.</div>
-                            <!-- Button -->
-                            <div class="form-group text-center">
-                                <div class="col-md-12">
-                                    <button type="submit" class="btn btn-warning">Enviar <span class="glyphicon glyphicon-send"></span></button>
-                                    <!-- Botão para ver resultado -->
-                                    <a href="result.php" class="btn btn-info">Ver resultado <span class="glyphicon glyphicon-list"></span></a>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-            </body>
-            </html>
+    <!-- Conteúdo Principal -->
+    <div class="content" id="main-content">
+        <div class="container">
+            <h1 class="text-center">Bem-vindo ao Painel de Administração!</h1>
+            <p class="text-center">Selecione uma opção no menu lateral para visualizar o conteúdo.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function showContent(section) {
+            var content = {
+                'relatorios': 'Aqui estão os relatórios.',
+                'funcionarios': 'Aqui estão os funcionários.',
+                'estoque': 'Aqui está o estoque.',
+                'cadastro': 'Aqui você pode cadastrar um novo funcionário.',
+                'solicitacoes': 'Aqui estão as solicitações.',
+                'configuracoes': 'Aqui você pode ajustar as configurações.'
+            };
+
+            document.getElementById('main-content').innerHTML = '<div class="container"><h1 class="text-center">' + content[section] + '</h1></div>';
+        }
+    </script>
+</body>
+</html>

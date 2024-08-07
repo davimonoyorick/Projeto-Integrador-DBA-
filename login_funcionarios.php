@@ -24,9 +24,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($stmt->num_rows > 0) {
         // Comparar a senha fornecida com o hash armazenado
         if ($senha == $stored_password) {
-            // Senha correta, armazene o nome do usuário na sessão e redirecione
+            // Senha correta, armazene o nome do usuário na sessão
             $_SESSION['user_name'] = $nome;
-            header('Location: admin_home.php');
+            $_SESSION['user_email'] = $email; // Armazene o e-mail do usuário na sessão
+
+            if ($email == 'admin@gmail.com') {
+                header('Location: admin_home.php'); // Redirecione para a página específica
+            } else {
+                header('Location: funcionario_home.php'); // Redirecione para a página padrão
+            }
             exit();
         } else {
             // Senha incorreta

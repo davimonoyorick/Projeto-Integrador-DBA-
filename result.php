@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/result-style.css">
-
 </head>
 <body>
     <div class="container mt-5">
@@ -32,15 +31,14 @@
             </select>
         </div>
         <div id="dados" class="row"></div>
-<div class="text-center mt-4">
-    <div class="button-container">
-        <button onclick="window.location.href='./admin_home.php'" class="btn btn-lg btn-primary btn-adjusted">
-            <i class="fas fa-user-plus"></i>Voltar<span class="glyphicon glyphicon-plus"></span>
-        </button>
-        <a href="index.php" class="btn btn-info btn-adjusted">Sair</a>
-    </div>
-</div>
-
+        <div class="text-center mt-4">
+            <div class="button-container">
+                <button onclick="window.history.back()" class="btn btn-lg btn-primary btn-adjusted">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </button>
+                <a href="index.php" class="btn btn-info btn-adjusted">Sair</a>
+            </div>
+        </div>
     </div>
 
     <script src="js/result.js"></script>
