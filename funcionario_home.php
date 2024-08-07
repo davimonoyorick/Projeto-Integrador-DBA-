@@ -136,117 +136,182 @@ $nome = $_SESSION['user_name']; // Obtenha o nome do usuário
     </nav>
 
     <div class="container">
-        <form class="well form-horizontal" action="submit.php" method="post" id="contact_form" enctype="multipart/form-data">
+        <form class="well form-horizontal" action="submit.php" method="post" id="contact_form">
             <fieldset>
-                <legend class="text-center">Cadastro Novo Doador</legend>
+                <legend class="text-center">SANGUE SOLIDÁRIO!</legend>
                 <div class="row">
                     <div class="col-md-6">
                         <!-- Nome -->
                         <div class="form-group">
-                            <label for="first_name">Nome</label>
-                            <input id="first_name" name="first_name" placeholder="Primeiro nome" class="form-control" type="text" required>
+                            <label class="col-md-4 control-label">Nome</label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input name="first_name" placeholder="Primeiro nome" class="form-control" type="text" required>
+                                </div>
+                            </div>
                         </div>
                         <!-- Sobrenome -->
                         <div class="form-group">
-                            <label for="last_name">Sobrenome</label>
-                            <input id="last_name" name="last_name" placeholder="Sobrenome" class="form-control" type="text" required>
+                            <label class="col-md-4 control-label">Sobrenome</label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input name="last_name" placeholder="Sobrenome" class="form-control" type="text" required>
+                                </div>
+                            </div>
                         </div>
                         <!-- Data de nascimento -->
                         <div class="form-group">
-                            <label for="data_nascimento">Data de Nascimento</label>
-                            <input id="data_nascimento" name="data_nascimento" class="form-control" type="date" required>
+                            <label class="col-md-4 control-label">Data de Nascimento</label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    <input name="data_nascimento" class="form-control" type="date" required>
+                                </div>
+                            </div>
                         </div>
                         <!-- Sexo -->
                         <div class="form-group">
-                            <label for="sexo">Sexo</label>
-                            <select id="sexo" name="sexo" class="form-control" required>
-                                <option value="">Selecione seu sexo</option>
-                                <option value="Masculino">Masculino</option>
-                                <option value="Feminino">Feminino</option>
-                                <option value="Outros">Outros</option>
-                            </select>
+                            <label class="col-md-4 control-label">Sexo</label>
+                            <div class="col-md-8 selectContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                    <select name="sexo" class="form-control" required>
+                                        <option value="">Selecione seu sexo</option>
+                                        <option value="Masculino">Masculino</option>
+                                        <option value="Feminino">Feminino</option>
+                                        <option value="Outros">Outros</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <!-- Histórico Médico -->
                         <div class="form-group">
-                            <label for="historico_medico">Histórico Médico</label>
-                            <textarea id="historico_medico" name="historico_medico" placeholder="Descreva o histórico médico do doador" class="form-control" rows="3"></textarea>
+                            <label class="col-md-4 control-label">Histórico Médico</label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-heart"></i></span>
+                                    <textarea name="historico_medico" placeholder="Descreva o histórico do doador" class="form-control"></textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <!-- Telefone -->
                         <div class="form-group">
-                            <label for="phone">Telefone</label>
-                            <input id="phone" name="phone" placeholder="(55) xxxxx-xxxx" class="form-control" type="text">
+                            <label class="col-md-4 control-label">Telefone</label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                                    <input id="phone" name="phone" placeholder="(55) xxxxx-xxxx" class="form-control" type="text">
+                                </div>
+                            </div>
                         </div>
                         <!-- Telefone Secundário -->
                         <div class="form-group">
-                            <label for="phone_secundario">Segundo Telefone</label>
-                            <input id="phone_secundario" name="phone_secundario" placeholder="(55) xxxxx-xxxx" class="form-control" type="text" required>
+                            <label class="col-md-4 control-label">Segundo Telefone</label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                                    <input id="phone_secundario" name="phone_secundario" placeholder="(55) xxxxx-xxxx" class="form-control" type="text" required>
+                                </div>
+                            </div>
                         </div>
                         <!-- Email -->
                         <div class="form-group">
-                            <label for="email">E-Mail</label>
-                            <input id="email" name="email" placeholder="Endereço de E-Mail" class="form-control" type="email" required>
+                            <label class="col-md-4 control-label">E-Mail</label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                    <input name="email" placeholder="Endereço de E-Mail" class="form-control" type="email" required>
+                                </div>
+                            </div>
                         </div>
                         <!-- Tipo de Sangue -->
                         <div class="form-group">
-                            <label for="tipo_sangue">Tipo de Sangue</label>
-                            <select id="tipo_sangue" name="tipo_sangue" class="form-control" required>
-                                <option value="">Selecione seu tipo de sangue</option>
-                                <option value="A+">A+</option>
-                                <option value="A-">A-</option>
-                                <option value="B+">B+</option>
-                                <option value="B-">B-</option>
-                                <option value="AB+">AB+</option>
-                                <option value="AB-">AB-</option>
-                                <option value="O+">O+</option>
-                                <option value="O-">O-</option>
-                            </select>
+                            <label class="col-md-4 control-label">Tipo de Sangue</label>
+                            <div class="col-md-8 selectContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-tint"></i></span>
+                                    <select name="tipo_sangue" class="form-control" required>
+                                        <option value="">Selecione seu tipo de sangue</option>
+                                        <option value="A+">A+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="B+">B+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <!-- RG -->
                         <div class="form-group">
-                            <label for="rg">RG</label>
-                            <input id="rg" name="rg" placeholder="RG" class="form-control" type="text">
+                            <label class="col-md-4 control-label">RG</label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                    <input id="rg" name="rg" placeholder="RG" class="form-control" type="text">
+                                </div>
+                            </div>
                         </div>
                         <!-- CPF -->
                         <div class="form-group">
-                            <label for="cpf">CPF</label>
-                            <input id="cpf" name="cpf" placeholder="CPF" class="form-control" type="text">
+                            <label class="col-md-4 control-label">CPF</label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                    <input id="cpf" name="cpf" placeholder="CPF" class="form-control" type="text">
+                                </div>
+                            </div>
                         </div>
                         <!-- Peso -->
                         <div class="form-group">
-                            <label for="peso">Peso</label>
-                            <input id="peso" name="peso" placeholder="Peso em kg" class="form-control" type="text" required>
+                            <label class="col-md-4 control-label">Peso</label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-scale"></i></span>
+                                    <input id="peso" name="peso" placeholder="Peso em kg" class="form-control" type="text" required>
+                                </div>
+                            </div>
                         </div>
                         <!-- Altura -->
                         <div class="form-group">
-                            <label for="altura">Altura</label>
-                            <input id="altura" name="altura" placeholder="Altura em cm" class="form-control" type="text" required>
+                            <label class="col-md-4 control-label">Altura</label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-resize-vertical"></i></span>
+                                    <input id="altura" name="altura" placeholder="Altura em cm" class="form-control" type="text" required>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Consentimento Informado -->
                         <div class="form-group">
-                            <div class="form-check">
-                                <input id="consentimento" type="checkbox" class="form-check-input" name="consentimento">
-                                <label class="form-check-label" for="consentimento">Eu confirmo que li e entendo os termos de doação de sangue.</label>
+                            <label class="col-md-4 control-label"></label>
+                            <div class="col-md-8">
+                                <div class="checkbox">
+                                    <label>
+                                        <input id="consentimento" type="checkbox" name="consentimento"> Eu confirmo que li e entendo os termos de doação de sangue.
+                                    </label>
+                                </div>
+                                <div id="consentimento-erro" style="color:red; display: none;">Você deve confirmar os termos antes de continuar.</div>
                             </div>
-                            <div id="consentimento-erro" style="color:red; display: none;">Você deve confirmar os termos antes de continuar.</div>
-                        </div>
-
-                        <!-- Upload de PDF -->
-                        <div class="form-group">
-                            <label for="exames">Exames e Observações Médicas (PDF)</label>
-                            <input id="exames" name="exames" type="file" class="form-control-file" accept=".pdf" required>
-                            <small id="examesHelp" class="form-text text-muted">Envie um arquivo PDF contendo exames e observações médicas.</small>
                         </div>
                     </div>
                 </div>
-                <div class="alert alert-success" role="alert" id="success_message" style="display: none;">Sucesso! <i class="fas fa-thumbs-up"></i> Obrigado por se inscrever, entraremos em contato com você em breve.</div>
+                <div class="alert alert-success" role="alert" id="success_message" style="display: none;">Sucesso <i class="glyphicon glyphicon-thumbs-up"></i> Obrigado por se inscrever, entraremos em contato com você em breve.</div>
                 <!-- Button -->
                 <div class="form-group text-center">
-                    <button type="submit" class="btn btn-warning">Enviar <i class="fas fa-paper-plane"></i></button>
-                    <!-- Botão para ver resultado -->
-                    <a href="result.php" class="btn btn-info">Ver resultado <i class="fas fa-list"></i></a>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-warning">Enviar <span class="glyphicon glyphicon-send"></span></button>
+                        <!-- Botão para ver resultado -->
+                        <a href="result.php" class="btn btn-info">Ver resultado <span class="glyphicon glyphicon-list"></span></a>
+                        <a href="index.php" class="btn btn-info">Sair</a>
+                    </div>
                 </div>
             </fieldset>
         </form>
