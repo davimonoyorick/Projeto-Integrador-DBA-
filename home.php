@@ -12,15 +12,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    
     <script>
         $(document).ready(function(){
             // Máscara para os campos
             $('#phone').mask('(00) 00000-0000');
-            $('#phone-secundario').mask('(00) 00000-0000');
+            $('#phone_secundario').mask('(00) 00000-0000');
             $('#cpf').mask('000.000.000-00');
             $('#rg').mask('00.000.000-0');
             $('#peso').mask('000.00');
-            $('#altura').mask('00.00');
+            $('#altura').mask('0.00');
 
             // Validação do consentimento
             $("#contact_form").on("submit", function(e) {
@@ -37,6 +38,22 @@
     </script>
 </head>
 <body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <img src="./img/favicon.png" style="width: 50px;"alt="icone de sangue">
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="#">Cadastro</a></li>
+                <li><a href="#">Estoque</a></li>
+                <li><a href="#">Solicitação</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span>Colaborador</a></li>
+                <li><a href="index.php"><span class="glyphicon glyphicon-log-out"></span>Sair</a></li>
+            </ul>
+        </div>
+    </nav>
     <div class="container">
         <form class="well form-horizontal" action="submit.php" method="post" id="contact_form">
             <fieldset>
@@ -212,7 +229,7 @@
                         <button type="submit" class="btn btn-warning">Enviar <span class="glyphicon glyphicon-send"></span></button>
                         <!-- Botão para ver resultado -->
                         <a href="result.php" class="btn btn-info">Ver resultado <span class="glyphicon glyphicon-list"></span></a>
-                        <a href="index.php" class="btn btn-info">Sair</a>
+                        <a href="index.php" class="btn btn-info"><span class="glyphicon glyphicon-log-out"></span>Sair</a>
                     </div>
                 </div>
             </fieldset>

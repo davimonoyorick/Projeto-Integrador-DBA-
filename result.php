@@ -7,6 +7,12 @@
     <title>Dados dos Doadores</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 
     <style type="text/css">
         body{
@@ -41,6 +47,9 @@
         .link-call{
             display: inline;
         }
+        .sair{
+            font-size:16px;
+        }
     </style>
 </head>
 <body>
@@ -70,7 +79,7 @@
         <button onclick="window.location.href='./home.php'" class="btn btn-lg btn-primary btn-adjusted">
             <i class="fas fa-user-plus"></i> VOLTAR <span class="glyphicon glyphicon-plus"></span>
         </button>
-        <a href="index.php" class="btn btn-info btn-adjusted">Sair</a>
+        <a href="index.php" class="btn btn-info btn-adjusted sair"><span class="glyphicon glyphicon-log-out"></span>Sair</a>
     </div>
 </div>
 
