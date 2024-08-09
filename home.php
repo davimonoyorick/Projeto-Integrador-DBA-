@@ -1,4 +1,8 @@
-<?php require "auth.php"?>
+<?php
+session_start();
+require "auth.php"; // Inclua o arquivo de autenticação
+$nome = isset($_SESSION['nome']) ? $_SESSION['nome'] : 'Visitante'; // Defina a variável $nome
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +16,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-    
+
     <script>
         $(document).ready(function(){
             // Máscara para os campos
@@ -41,7 +45,7 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <img src="./img/favicon.png" style="width: 50px;"alt="icone de sangue">
+                <img src="./img/favicon.png" style="width: 50px;" alt="icone de sangue">
             </div>
             <ul class="nav navbar-nav">
                 <li><a href="#">Cadastro</a></li>
@@ -49,7 +53,7 @@
                 <li><a href="#">Solicitação</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span>Colaborador</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span><?php echo htmlspecialchars($nome); ?></a></li>
                 <li><a href="index.php"><span class="glyphicon glyphicon-log-out"></span>Sair</a></li>
             </ul>
         </div>

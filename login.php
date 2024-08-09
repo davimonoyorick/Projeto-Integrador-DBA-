@@ -23,7 +23,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
                 session_start();
             }
             $_SESSION["id"] = $usuario['id'];
-            $_SESSION["nome"] = $usuario['nome'];
+            $_SESSION["nome"] = $usuario['nome']; // Corrigido de $nome['nome'] para $usuario['nome']
 
             header("Location: home.php");
             exit(); // Garantir que o redirecionamento ocorra imediatamente
@@ -33,6 +33,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
