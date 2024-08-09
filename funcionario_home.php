@@ -10,18 +10,21 @@ if (!isset($_SESSION['user_name'])) {
 $nome = $_SESSION['user_name']; // Obtenha o nome do usuário
 ?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem-vindo</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BANCO DE SANGUE</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-    <link rel="stylesheet" href="css/admin_home-style.css">
+    
     <script>
-        $(document).ready(function() {
+        $(document).ready(function(){
             // Máscara para os campos
             $('#phone').mask('(00) 00000-0000');
             $('#phone_secundario').mask('(00) 00000-0000');
@@ -35,106 +38,33 @@ $nome = $_SESSION['user_name']; // Obtenha o nome do usuário
                 if (!$("#consentimento").is(":checked")) {
                     e.preventDefault();
                     $("#consentimento-erro").show();
-                    $("#consentimento").closest(".form-check").css("border", "2px solid red");
+                    $("#consentimento").closest(".checkbox").css("border", "2px solid red");
                 } else {
                     $("#consentimento-erro").hide();
-                    $("#consentimento").closest(".form-check").css("border", "none");
+                    $("#consentimento").closest(".checkbox").css("border", "none");
                 }
             });
         });
     </script>
-    <style>
-        body {
-            background-image: url('img/banco_de_sangue.jpeg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            color: #fff;
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            background: rgba(0, 0, 0, 0.8); /* Transparência de 80% */
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-            margin-top: 80px; /* Margem para não sobrepor o conteúdo */
-        }
-        .form-group {
-            margin-bottom: 1rem;
-        }
-        .form-control {
-            margin-bottom: 0.5rem;
-            border-radius: 0.25rem;
-            border: 1px solid #ddd;
-        }
-        .form-control:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
-        }
-        .form-check-label {
-            margin-left: 0.5rem;
-        }
-        .form-check-input {
-            margin-left: 0.3rem;
-        }
-        .form-check-input[type="file"] {
-            padding: 0.5rem;
-        }
-        .alert {
-            border-radius: 0.25rem;
-        }
-        .navbar {
-            margin-bottom: 20px;
-        }
-        .btn {
-            border-radius: 0.25rem;
-        }
-        .btn-warning {
-            background-color: #f0ad4e;
-            border-color: #f0ad4e;
-        }
-        .btn-warning:hover {
-            background-color: #ec971f;
-            border-color: #d58512;
-        }
-        .btn-info {
-            background-color: #5bc0de;
-            border-color: #46b8da;
-        }
-        .btn-info:hover {
-            background-color: #31b0d5;
-            border-color: #269abc;
-        }
-    </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-        <a class="navbar-brand" href="#">Colaborador: <?php echo htmlspecialchars($nome); ?></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-bell notification-icon"></i></a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Menu
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="estoque.php">Estoque</a>
-                        <a class="dropdown-item" href="solicitacoes.php">Solicitação</a>
-                        <a class="dropdown-item" href="#">Cadastro</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="logout.php">Sair</a>
-                    </div>
-                </li>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <img src="./img/favicon.png" style="width: 50px;"alt="icone de sangue">
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="#">Cadastro</a></li>
+                <li><a href="estoque.php">Estoque</a></li>
+                <li><a href="solicitacoes.php">Solicitação</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+		<li><a ><span class="glyphicon glyphicon-user"><?php echo  htmlspecialchars($nome); ?></a></li>
+        
+                <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>Sair</a></li>
             </ul>
         </div>
     </nav>
-
     <div class="container">
         <form class="well form-horizontal" action="submit.php" method="post" id="contact_form">
             <fieldset>
@@ -310,13 +240,12 @@ $nome = $_SESSION['user_name']; // Obtenha o nome do usuário
                         <button type="submit" class="btn btn-warning">Enviar <span class="glyphicon glyphicon-send"></span></button>
                         <!-- Botão para ver resultado -->
                         <a href="result.php" class="btn btn-info">Ver resultado <span class="glyphicon glyphicon-list"></span></a>
-                        <a href="index.php" class="btn btn-info">Sair</a>
+                        <a href="index.php" class="btn btn-info"><span class="glyphicon glyphicon-log-out"></span>Sair</a>
                     </div>
                 </div>
             </fieldset>
         </form>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
