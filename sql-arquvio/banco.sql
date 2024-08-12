@@ -1,29 +1,28 @@
-CREATE DATABASE banco_de_sangue_01;
+CREATE DATABASE IF NOT EXISTS banco_de_sangue_01;
 USE banco_de_sangue_01;
 
 -- Tabela pessoal
-CREATE TABLE pessoal (
+CREATE TABLE IF NOT EXISTS pessoal (
     id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     data_nascimento VARCHAR(10) NOT NULL,
     tipo_sangue VARCHAR(5) NOT NULL,
     sexo VARCHAR(50) NOT NULL,
-    peso DECIMAL(5,2), -- Novo campo
-    altura DECIMAL(5,2), -- Novo campo
-    historico_medico TEXT, -- Novo campo
-    consentimento TINYINT(1) DEFAULT 0, -- Novo campo
-    data_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    peso DECIMAL(5,2), 
+    altura DECIMAL(5,2), 
+    historico_medico TEXT, 
+    consentimento TINYINT(1) DEFAULT 0, 
+    data_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    senha VARCHAR(20) NOT NULL
 );
-
-select * from pessoal;
 
 -- Tabela contato_pessoal
 CREATE TABLE contato_pessoal (
     id INT AUTO_INCREMENT PRIMARY KEY,
     doador_id INT NOT NULL,
     phone VARCHAR(20) NOT NULL,
-    phone_secundario VARCHAR(20), -- Novo campo
+    phone_secundario VARCHAR(20), 
     email VARCHAR(100) NOT NULL,
     FOREIGN KEY (doador_id) REFERENCES pessoal(id)
 );
@@ -44,6 +43,20 @@ CREATE TABLE funcionario (
     email VARCHAR(255) NOT NULL UNIQUE,
     senha VARCHAR(20) NOT NULL
 );
+
+CREATE TABLE estoque(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    tipo_sanguineo VARCHAR(5),
+    quantidade_bolsa INT,
+    localizacao VARCHAR(255)
+    );
+    
+INSERT INTO estoque(tipo_sanguineo, quantidade_bolsa, localizacao)VALUES
+("A",5,"Refrigerador Ala Norte"),
+("A+",10,"Refrigerador Ala Sul"),
+("O",0,"Refrigerador Ala Sul Compartimento Vermelho");
+
+
 
 INSERT INTO funcionario(nome, email, senha) VALUES
 ("davi ", "davi@gmail.com", "123"),
