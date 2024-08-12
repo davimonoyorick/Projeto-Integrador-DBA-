@@ -17,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $altura = $_POST['altura']; // Novo campo
     $historico_medico = $_POST['historico_medico']; // Novo campo
     $consentimento = isset($_POST['consentimento']) ? 1 : 0; // Novo campo
+    $quantidade = 1; // Aqui você pode definir a quantidade que deseja adicionar ao estoque, ou modificar para pegar do formulário.
 
     // Verificar se os dados já existem no banco de dados
     $check_sql = "SELECT * FROM pessoal WHERE first_name = ? AND last_name = ? AND data_nascimento = ? AND tipo_sangue = ?";
@@ -41,6 +42,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $insert_identidade = "INSERT INTO identidade (doador_id, rg, cpf) VALUES (?, ?, ?)";
         $stmt = $mysqli->prepare($insert_identidade);
         $stmt->bind_param("iss", $doador_id, $rg, $cpf);
+        $stmt->execute();
+
+        // Inserir dados na tabela estoque
+        $insert_estoque = "INSERT INTO estoque (tipo_sangue, quantidade) VALUES (?, ?)";
+        $stmt = $mysqli->prepare($insert_estoque);
+        $stmt->bind_param("si", $tipo_sangue, $quantidade);
         $stmt->execute();
 
         echo "Dados inseridos com sucesso!";

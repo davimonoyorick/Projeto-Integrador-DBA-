@@ -48,9 +48,7 @@ $nome = isset($_SESSION['nome']) ? $_SESSION['nome'] : 'Visitante'; // Defina a 
                 <img src="./img/favicon.png" style="width: 50px;" alt="icone de sangue">
             </div>
             <ul class="nav navbar-nav">
-                <li><a href="#">Cadastro</a></li>
-                <li><a href="#">Estoque</a></li>
-                <li><a href="#">Solicitação</a></li>
+                <li><a href="estoque.php">Estoque</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-user"></span><?php echo htmlspecialchars($nome); ?></a></li>
@@ -233,7 +231,7 @@ $nome = isset($_SESSION['nome']) ? $_SESSION['nome'] : 'Visitante'; // Defina a 
                         <button type="submit" class="btn btn-warning">Enviar <span class="glyphicon glyphicon-send"></span></button>
                         <!-- Botão para ver resultado -->
                         <a href="result.php" class="btn btn-info">Ver resultado <span class="glyphicon glyphicon-list"></span></a>
-                        <a href="index.php" class="btn btn-info"><span class="glyphicon glyphicon-log-out"></span>Sair</a>
+                        <a href="index.php" class="btn btn-info"><span class="glyphicon glyphicon-log-out"></span> Sair</a>
                     </div>
                 </div>
             </fieldset>

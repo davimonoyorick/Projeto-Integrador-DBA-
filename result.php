@@ -79,7 +79,7 @@
         <button onclick="window.location.href='./home.php'" class="btn btn-lg btn-primary btn-adjusted">
             <i class="fas fa-user-plus"></i> VOLTAR <span class="glyphicon glyphicon-plus"></span>
         </button>
-        <a href="index.php" class="btn btn-info btn-adjusted sair"><span class="glyphicon glyphicon-log-out"></span>Sair</a>
+        <a href="index.php" class="btn btn-info btn-adjusted sair"><span class="glyphicon glyphicon-log-out"></span> Sair</a>
     </div>
 </div>
 
