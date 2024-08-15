@@ -23,7 +23,7 @@ CREATE TABLE contato_pessoal (
     phone VARCHAR(20) NOT NULL,
     phone_secundario VARCHAR(20), -- Novo campo
     email VARCHAR(100) NOT NULL,
-    FOREIGN KEY (doador_id) REFERENCES pessoal(id)
+    FOREIGN KEY (doador_id) REFERENCES pessoal(id) on update cascade 
 );
 
 -- Tabela identidade
@@ -32,9 +32,16 @@ CREATE TABLE identidade (
     doador_id INT NOT NULL,
     rg VARCHAR(20) NOT NULL,
     cpf VARCHAR(20) NOT NULL,
-    FOREIGN KEY (doador_id) REFERENCES pessoal(id)
+    FOREIGN KEY (doador_id) REFERENCES pessoal(id) on update cascade
 );
-
+-- tabela de estoque 
+create table estoque (
+	id int auto_increment primary key,
+    tipo_sangue varchar(5) not null,
+    doador_id INT NOT NULL,
+    quantidade int not null,
+    FOREIGN KEY (doador_id) REFERENCES pessoal(id) on update cascade
+);
 -- Tabela funcionario
 CREATE TABLE funcionario (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -42,9 +49,7 @@ CREATE TABLE funcionario (
     email VARCHAR(255) NOT NULL UNIQUE,
     senha VARCHAR(20) NOT NULL
 );
-
 INSERT INTO funcionario(nome, email, senha) VALUES
-("lucas", "lucascunhareis2002@gmail.com", "123321");
+("luka", "lukaSantos@hotmail.com", "123321");
 select * from pessoal;
 select * from contato_pessoal;
-select * from identidade;
