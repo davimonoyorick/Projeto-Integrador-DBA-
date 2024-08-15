@@ -45,9 +45,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
 
         // Inserir dados na tabela estoque
-        $insert_estoque = "INSERT INTO estoque (tipo_sangue, quantidade) VALUES (?, ?)";
+        $insert_estoque = "INSERT INTO estoque (tipo_sangue, quantidade,doador_id) VALUES (?, ?, ?)";
         $stmt = $mysqli->prepare($insert_estoque);
-        $stmt->bind_param("si", $tipo_sangue, $quantidade);
+        $stmt->bind_param("sii", $tipo_sangue, $quantidade,$doador_id);
         $stmt->execute();
 
         echo "Dados inseridos com sucesso!";
